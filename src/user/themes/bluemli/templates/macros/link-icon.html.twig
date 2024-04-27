@@ -1,0 +1,7 @@
+{% macro create(link, image_file, name = '', size = "50px") %}
+<a href="{{link}}" target="_blank" title="{{name}}">
+    <div class="link-icon" style="width: {{size}}; height: {{size}}">
+        <img src="{{ image_file }}"/>
+    </div>
+</a>
+{% endmacro %}

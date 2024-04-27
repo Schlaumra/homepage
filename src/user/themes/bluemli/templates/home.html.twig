@@ -1,0 +1,38 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% include 'home/me.html.twig' %}
+    <section id="welcome" class="title-center">
+        {{ page.content|raw }}
+    </section>
+    <div class="container">
+        <div class="columns">
+            <div class="column col-6">
+                <section id="blog-posts" class="title-center">
+                    <h2>Latest post</h2>
+                    <div class="empty">
+                        <p class="empty-title h5">Coming soon...</p>
+                        <p class="empty-subtitle">Stay tuned!</p>
+                    </div>
+                </section>
+            </div>
+            <div class="column col-6">
+                <section id="links" class="title-center">
+                    <h2>Links</h2>
+                    {% include 'partials/link-icon-list.html.twig' %}
+                    <div class="container btn-link-list">
+                        {% for button in page.header.button_links %}
+                        <div class="column">
+                            <div class="btn-link">
+                                <a href="{{ button.link }}">
+                                    <button class="btn btn-link">{{button.name}}</button>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

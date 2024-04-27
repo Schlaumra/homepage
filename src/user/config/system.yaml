@@ -1,0 +1,42 @@
+absolute_urls: false
+
+home:
+  alias: '/home'
+
+pages:
+  theme: bluemli
+  markdown:
+    extra: false
+  process:
+    markdown: true
+    twig: false
+
+cache:
+  enabled: true
+  check:
+    method: hash
+
+twig:
+  cache: true
+  debug: false
+  auto_reload: false
+  autoescape: true
+
+assets:
+  css_pipeline: false
+  css_minify: true
+  css_rewrite: true
+  js_pipeline: false
+  js_module_pipeline: false
+  js_minify: true
+
+errors:
+  display: false
+  log: true
+
+debugger:
+  enabled: false
+  censored: true
+
+gpm:
+  verify_peer: true

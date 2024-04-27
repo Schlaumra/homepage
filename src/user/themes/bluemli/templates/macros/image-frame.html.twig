@@ -1,0 +1,14 @@
+{% macro create(image_file, alt, height = "400px") %}
+    <section class="image-frame hide-xs" style="height: {{ height }}">
+        <div class="vertical-line" style="height: 50%"></div>
+        <div class="vertical-line" style="height: 80%"></div>
+        <img class="image" src="{{ url(image_file) }}" alt="{{ alt }}"/>
+        <div class="vertical-line" style="height: 80%"></div>
+        <div class="vertical-line" style="height: 50%"></div>
+    </section>
+    <div class="show-xs">
+        <section class="image-frame">
+            <img class="image" src="{{ url(image_file) }}" alt="{{ alt }}"/>
+        </section>
+    </div>
+{% endmacro %}
