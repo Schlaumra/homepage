@@ -1,0 +1,8 @@
+{% import 'macros/image-frame.html.twig' as image %}
+{% set me = page.header.me %}
+
+<div class="container">
+    <h1 class="text-center" style="margin-top: 0">{{ me.name }}</h1>
+    {{ image.create(me.image, 'Image of ' ~ me.name) }}
+    <h3 class="text-center">"{{ me.motto }}"</h3>
+</div>

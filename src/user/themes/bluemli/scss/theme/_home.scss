@@ -1,0 +1,16 @@
+#welcome {
+    padding: 0.5rem 0;
+    border-top: 0.1rem dashed $dark-color;
+    border-bottom: 0.1rem dashed $dark-color;
+}
+
+.btn-link-list {
+    .btn-link {
+        display: flex;
+        justify-content: center;
+
+        .btn {
+            min-width: 10rem;
+        }
+    }
+}

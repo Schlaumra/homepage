@@ -1,0 +1,66 @@
+<div class="card">
+    {% if page.header.img_carousel %}
+    <div class="card-image">
+        {% set images = page.header.img_carousel %}
+        <div class="carousel" id="carousel-{{ page.id }}">
+            {% for image in images %}
+            {% if loop.index == 1 %}
+            <input class="carousel-locator" id="slide-{{ page.id }}-{{ loop.index }}" type="radio" name="carousel-radio-{{ page.id }}" hidden checked>
+            {% else %}
+            <input class="carousel-locator" id="slide-{{ page.id }}-{{ loop.index }}" type="radio" name="carousel-radio-{{ page.id }}" hidden>
+            {% endif %}
+            {% endfor %}
+            <div class="carousel-container">
+                {% for image in images %}
+                {% set image_file = page.media.images[image] %}
+                <figure class="carousel-item">
+                    <img class="img-responsive rounded" src="{{ image_file.url }}" alt="project image">
+                </figure>
+                {% endfor %}
+            </div>
+            <div class="carousel-nav">
+                {% for image in images %}
+                <label class="nav-item text-hide c-hand" for="slide-{{ page.id }}-{{ loop.index }}">{{ loop.index }}</label>
+                {% endfor %}
+            </div>
+        </div>
+        <script>
+            function changeSlide() {
+                var parentObject = document.getElementById('carousel-{{ page.id }}');
+                var locators = parentObject.querySelectorAll('.carousel-locator');
+                var checkedLocator = parentObject.querySelector('.carousel-locator:checked')
+                var index = Array.prototype.indexOf.call(locators, checkedLocator);
+                locators[(index + 1) % locators.length].checked = true;
+            }
+            setInterval(changeSlide, 7000);
+        </script>
+    </div>
+    {% elseif page.header.img %}
+    <div class="card-image">
+        {% set image = page.media.images[page.header.img] %}
+        <img src="{{image.url }}" class="img-responsive">
+    </div>
+    {% endif %}
+    <div class="card-header">
+        <div class="card-title h5">{{ page.header.title }}</div>
+        <div class="card-subtitle text-gray">{{ page.header.subtitle }}</div>
+        <div class="card-labels">
+            {% if page.header.wip %}
+            <span class="label label-rounded label-warning">Work in Progress</span>
+            {% endif %}
+            {% for tag in page.header.tags %}
+            <span class="label label-rounded label-secondary">{{ tag }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="card-body">
+    {{ page.content|raw }}
+    </div>
+        <div class="card-footer">
+        {% if page.header.private %}
+        <button class="btn btn-primary tooltip" data-tooltip="Currently the repo is private" disabled>Repository</button>
+        {% elseif page.header.repo %}
+        <a href="{{page.header.repo}}" target="_blanc"><button class="btn btn-primary">Repository</button></a>
+        {% endif %}
+    </div>
+</div>

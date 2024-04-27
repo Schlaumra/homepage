@@ -1,0 +1,10 @@
+{% import 'macros/link-icon.html.twig' as link %}
+{% set icons = page.header.icon_links %}
+
+<div class="icon-list">
+{% for icon in icons %}
+    <div class="icon">
+    {{ link.create(icon.link, icon.file, icon.name) }}
+    </div>
+{% endfor %}
+</div>

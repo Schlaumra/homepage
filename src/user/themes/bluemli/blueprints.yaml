@@ -1,0 +1,15 @@
+name: Bluemli
+slug: bluemli
+type: theme
+version: 0.0.1
+description: Simple theme for schlaumra
+icon: microchip
+author:
+  name: Raphael Amhof
+  email: schlaumra@gmail.com
+  url: https://www.schlaumra.com
+homepage: https://github.com/Schlaumra
+keywords: bluemli, spectre, theme
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }

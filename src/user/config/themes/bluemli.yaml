@@ -1,0 +1,4 @@
+custom_logo:
+  - name: 'logo-black-negative.svg'
+custom_logo_mobile:
+    - name: 'logo-white-negative.svg'
