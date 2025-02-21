@@ -23,6 +23,9 @@ icon_links:
     - name: "8n"
       link: "https://www.8a.nu/user/raphael-amhof/sportclimbing"
       file: "8n.webp"
+    - name: "email"
+      link: "mailto:schlaumra.com.t9rrw@passinbox.com"
+      file: "email.svg"
 ---
 
 ### Grüezi, Hoila, Ciao and Welcome!
