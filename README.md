@@ -16,12 +16,14 @@ Schlaumra's homepage serves as a platform to showcase personal projects, share t
 ## Setup
 
 Install PHP
+Install php-gd
+Enable gd
 
 ## Development
 
 1. Run `pnpm init-grav` to initialize the repo and install grav
 2. Run `pnpm install` to install all missing dependencies
-3. Run `pnpm watch` to start serving the project
+3. Run `pnpm dev` to start serving the project
 4. Open `http://localhost:8000`
 
 ### Build
@@ -33,9 +35,8 @@ pnpm build
 
 ## Deployment
 
-Create a release on GitHub
-
 ```
+pnpm init-grav
 docker build --no-cache -t schlaumra/homepage:latest .
 docker push schlaumra/homepage:latest
 ```

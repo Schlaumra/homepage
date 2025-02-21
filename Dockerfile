@@ -68,13 +68,9 @@ RUN (crontab -l; echo "* * * * * cd /var/www/html;/usr/local/bin/php bin/grav sc
 ARG HOMEPAGE_VERSION=latest
 
 WORKDIR /var/www
-RUN curl -o homepage-${HOMEPAGE_VERSION}.zip -SL https://github.com/Schlaumra/homepage/archive/refs/tags/${HOMEPAGE_VERSION}.zip && \
-    unzip homepage-${HOMEPAGE_VERSION}.zip && \
-    rm -Rf /var/www/html/user && \
-    mv -T /var/www/homepage-${HOMEPAGE_VERSION}/src/user /var/www/html/user && \
-    rm /var/www/homepage-${HOMEPAGE_VERSION}.zip && \
-    rm -Rf /var/www/homepage-${HOMEPAGE_VERSION} && \
-    rm -Rf /var/www/html/user/env
+RUN rm -Rf /var/www/html/user
+ADD --chown=www-data:www-data src/user /var/www/html/user
+RUN rm -Rf /var/www/html/user/env
 
 # Return to root user
 USER root
