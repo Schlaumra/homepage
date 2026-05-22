@@ -11,7 +11,6 @@ if [ "$1" = 'init' ]; then
     rmdir grav-tmp
     pnpm install
 elif [ "$1" = 'watch' ]; then
-    node_modules/gulp/bin/gulp.js watch &
     cd src
     bin/grav server
 fi
