@@ -1,4 +1,4 @@
-FROM php:8.3-apache
+FROM php:8.5-apache
 COPY ./src/ /var/www/html/
 
 # Enable Apache Rewrite + Expires Module
@@ -7,26 +7,23 @@ RUN a2enmod rewrite expires && \
     /etc/apache2/conf-available/security.conf
 
 # Install dependencies
+# Base image already includes: ctype, curl, dom, json, libxml, mbstring,
+# openssl, session, simplexml, opcache, gcc, g++, make
 RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
-    libyaml-dev \
-    libzip4 \
     libzip-dev \
     zlib1g-dev \
     libicu-dev \
-    g++ \
     git \
     cron \
-    vim \
-    && docker-php-ext-install opcache \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install zip \
+    && docker-php-ext-install -j$(nproc) zip \
     && rm -rf /var/lib/apt/lists/*
 
 # set recommended PHP.ini settings
